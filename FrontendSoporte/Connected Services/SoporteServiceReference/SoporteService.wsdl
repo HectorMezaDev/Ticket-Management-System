@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ObtenerTickets">
+        <s:complexType />
+      </s:element>
+      <s:element name="ObtenerTicketsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerTicketsResult" type="tns:ArrayOfTicket" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTicket">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Ticket" nillable="true" type="tns:Ticket" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Ticket">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="IdTicket" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Solicitante" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Departamento" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Asunto" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Descripcion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Prioridad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaRegistro" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ObtenerTicketPorId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idTicket" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerTicketPorIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerTicketPorIdResult" type="tns:Ticket" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarTicket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="solicitante" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="departamento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="asunto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="prioridad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsertarTicketResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsertarTicketResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarTicket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idTicket" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="solicitante" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="departamento" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="asunto" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="prioridad" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ActualizarTicketResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ActualizarTicketResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarTicket">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="idTicket" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EliminarTicketResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EliminarTicketResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerTicketsPorEstado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="estado" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ObtenerTicketsPorEstadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ObtenerTicketsPorEstadoResult" type="tns:ArrayOfTicket" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ObtenerTicketsSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerTickets" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerTicketsSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerTicketsResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerTicketPorIdSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerTicketPorId" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerTicketPorIdSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerTicketPorIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsertarTicketSoapIn">
+    <wsdl:part name="parameters" element="tns:InsertarTicket" />
+  </wsdl:message>
+  <wsdl:message name="InsertarTicketSoapOut">
+    <wsdl:part name="parameters" element="tns:InsertarTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarTicketSoapIn">
+    <wsdl:part name="parameters" element="tns:ActualizarTicket" />
+  </wsdl:message>
+  <wsdl:message name="ActualizarTicketSoapOut">
+    <wsdl:part name="parameters" element="tns:ActualizarTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="EliminarTicketSoapIn">
+    <wsdl:part name="parameters" element="tns:EliminarTicket" />
+  </wsdl:message>
+  <wsdl:message name="EliminarTicketSoapOut">
+    <wsdl:part name="parameters" element="tns:EliminarTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerTicketsPorEstadoSoapIn">
+    <wsdl:part name="parameters" element="tns:ObtenerTicketsPorEstado" />
+  </wsdl:message>
+  <wsdl:message name="ObtenerTicketsPorEstadoSoapOut">
+    <wsdl:part name="parameters" element="tns:ObtenerTicketsPorEstadoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SoporteServiceSoap">
+    <wsdl:operation name="ObtenerTickets">
+      <wsdl:input message="tns:ObtenerTicketsSoapIn" />
+      <wsdl:output message="tns:ObtenerTicketsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerTicketPorId">
+      <wsdl:input message="tns:ObtenerTicketPorIdSoapIn" />
+      <wsdl:output message="tns:ObtenerTicketPorIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsertarTicket">
+      <wsdl:input message="tns:InsertarTicketSoapIn" />
+      <wsdl:output message="tns:InsertarTicketSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarTicket">
+      <wsdl:input message="tns:ActualizarTicketSoapIn" />
+      <wsdl:output message="tns:ActualizarTicketSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarTicket">
+      <wsdl:input message="tns:EliminarTicketSoapIn" />
+      <wsdl:output message="tns:EliminarTicketSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerTicketsPorEstado">
+      <wsdl:input message="tns:ObtenerTicketsPorEstadoSoapIn" />
+      <wsdl:output message="tns:ObtenerTicketsPorEstadoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SoporteServiceSoap" type="tns:SoporteServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenerTickets">
+      <soap:operation soapAction="http://tempuri.org/ObtenerTickets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerTicketPorId">
+      <soap:operation soapAction="http://tempuri.org/ObtenerTicketPorId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarTicket">
+      <soap:operation soapAction="http://tempuri.org/InsertarTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarTicket">
+      <soap:operation soapAction="http://tempuri.org/ActualizarTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarTicket">
+      <soap:operation soapAction="http://tempuri.org/EliminarTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerTicketsPorEstado">
+      <soap:operation soapAction="http://tempuri.org/ObtenerTicketsPorEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SoporteServiceSoap12" type="tns:SoporteServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ObtenerTickets">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerTickets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerTicketPorId">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerTicketPorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsertarTicket">
+      <soap12:operation soapAction="http://tempuri.org/InsertarTicket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarTicket">
+      <soap12:operation soapAction="http://tempuri.org/ActualizarTicket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarTicket">
+      <soap12:operation soapAction="http://tempuri.org/EliminarTicket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerTicketsPorEstado">
+      <soap12:operation soapAction="http://tempuri.org/ObtenerTicketsPorEstado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SoporteService">
+    <wsdl:port name="SoporteServiceSoap" binding="tns:SoporteServiceSoap">
+      <soap:address location="https://localhost:44356/SoporteService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SoporteServiceSoap12" binding="tns:SoporteServiceSoap12">
+      <soap12:address location="https://localhost:44356/SoporteService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

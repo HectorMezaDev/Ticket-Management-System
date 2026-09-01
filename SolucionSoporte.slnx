@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="BackendSoporte/BackendSoporte.csproj" />
+  <Project Path="FrontendSoporte/FrontendSoporte.csproj">
+    <BuildDependency Project="BackendSoporte/BackendSoporte.csproj" />
+  </Project>
+</Solution>
